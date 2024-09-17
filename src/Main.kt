@@ -1,15 +1,27 @@
 fun main() {
-    val pikachu = Pokemon(name = "Pikachu", type = "Electric")
 
-    println("Pokemon Name: ${pikachu.name}")
-    println("Pokemon Type: ${pikachu.type}")
-    println("Pokemon ID: ${pikachu.id}")
-    println("Pokemon Description: ${pikachu.description}")
+        val digimon = Digimon(name = "Agumon", attribute = "Fire", canFuse = true)
 
-    pikachu.currentHealth = 90
-    println("Pokemon Health: ${pikachu.currentHealth}")
+        println("Testing fuseInfo:")
+        digimon.fuseInfo()
 
-    println("Pokemon Summary: ${pikachu.getPokemonSummary()}")
+        println("\nTesting increaseHealth:")
+        println("Initial Health: ${digimon.newHealth}")
+        digimon.increaseHealth()
+        println("New Health after increase: ${digimon.newHealth}")
 
-    pikachu.celebrate()
-}
+        println("\nTesting doEvo:")
+        digimon.newHealth = digimon.baseHealth + 51
+        println("Stage before evolution: ${digimon.stage}")
+        digimon.doEvo()
+        println("Stage after evolution attempt: ${digimon.stage}")
+
+        println("\nTesting toString:")
+        println(digimon.toString())
+
+        println("\nTesting description:")
+        digimon.description()
+
+        println("\nTesting getPokemonSummary:")
+        println(digimon.getPokemonSummary())
+    }

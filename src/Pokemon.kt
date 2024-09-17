@@ -1,23 +1,24 @@
 import kotlin.random.Random
 
-class Pokemon(
+ open class Pokemon(
     val name: String,
     var type: String,
     private val baseExperience: Int = 50,
     var level: Int = 1
 ) {
-    val id: Int = Random.nextInt(1,1025)
+    val id: Int = genID()
 
-    private var secretPower: String? = null
-
-    var currentHealth: Int = 100
-
-    val description: String
-        get() = "$name is a $type type Pokémon."
+    var baseHealth: Int = 100
 
     init {
         println("A new Pokémon has been created: $name")
     }
+      open fun description(){
+         println("$name is a $type type Pokémon.")
+     }
+     open fun genID(): Int {
+         return Random.nextInt(1,1205)
+     }
 
     fun celebrate() {
         println("$name is celebrating its victory!")
@@ -27,8 +28,8 @@ class Pokemon(
         return baseExperience * level
     }
 
-    fun getPokemonSummary(): String {
+    open fun getPokemonSummary(): String {
         val power = calculatePower()
-        return "Name: $name, Type: $type, Level: $level, Health: $currentHealth, Power: $power"
+        return "Name: $name, Type: $type, Level: $level, Health: $baseHealth, Power: $power"
     }
 }
